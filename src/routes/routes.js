@@ -1,10 +1,12 @@
 import express from 'express';
-import {welcomeuser,adduser,showusers} from '../controllers/UserController.js'
+import {upload} from "../middleware/multer.js"
+import { welcomeuser, adduser, showusers } from '../controllers/UserController.js';
+
 const router = express.Router();
 
 
-router.get('/welcome',welcomeuser)
-router.get('/show',showusers)
-router.post('/adduser',express.json(), adduser)
+router.get('/welcome', welcomeuser);
+router.get('/show', showusers);
+router.post('/adduser', upload.single('image'), adduser);
 
 export default router;
